@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -75,16 +76,19 @@ WSGI_APPLICATION = "practicaCrud.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+# settings.py
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'crud',
-        'USER': 'postgres',
-        'PASSWORD': 'Estudio8',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.postgresql',  # Motor de la base de datos
+        'NAME': config('DB_NAME'),       # Nombre de la base de datos
+        'USER': config('USER'),                       # Usuario de PostgreSQL
+        'PASSWORD': config('PASSWORD'),                # Contraseña de PostgreSQL
+        'HOST': config('HOST'),                        # Host de la base de datos
+        'PORT': config('PORT'),                             # Puerto de PostgreSQL (por defecto es 5432)
     }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

@@ -10,15 +10,15 @@ def create_task(request):
     task = Task(title=request.POST["title"], description=request.POST["description"])
     task.save()
     print(request.POST)
-    return redirect('/tasks/')
+    return redirect('/')
 
 def delete_task(request, task_id):
     task = Task.objects.get(id=task_id)
     task.delete()
-    return redirect('/tasks/') 
+    return redirect('/') 
 
 def done_task(request, task_id):
     task = Task.objects.get(id=task_id)
     task.done = True
     task.save()
-    return redirect('/tasks/') 
+    return redirect('/') 
